@@ -1,16 +1,20 @@
 package org.motechproject.spike;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
 public class TestService {
 
+    @Autowired
+    private UserDao userDao;
+
     public String create() {
-        return "(CouchDB) Created Couch.";
+        userDao.create();
+        return "(CouchDB) Created.";
     }
 
-    public String find() {
-        long count = -1;
-        return "(CouchDB) Count: " + count;
+    public String count() {
+        return "(CouchDB) Count: " + userDao.count();
     }
 }
